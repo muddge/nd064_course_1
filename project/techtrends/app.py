@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 
 #Counter to track number of database connections
 logging.basicConfig(level=logging.DEBUG, \
-                    format=f'%(asctime)s %(levelname)s %(name)s %(message)s',\
+                    format=u'%(asctime)s %(levelname)s %(name)s %(message)s',\
                     datefmt='%Y-%m-%d,%H:%M:%S')
 
 connection_count = 0

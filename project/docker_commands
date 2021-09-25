@@ -1,11 +1,44 @@
-## Docker commands used to build the application 
+## Docker commands used to build the application
 # TODO: insert the docker build command
+docker build -t techtrends .
 
 ## Docker commands used to run the application
 # TODO: insert the docker run command
+docker container run -p 7111:3111 -ti techtrends
 
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command
+# container_ID obtained from running 'docker ps' or 'docker ps -a'
+docker logs laughing_volhard
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+# TODO: paste logs from the Docker container
+* Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+2021-09-24,03:18:12 INFO werkzeug  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+2021-09-24,03:18:17 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:18:17] "GET / HTTP/1.1" 200 -
+2021-09-24,03:18:17 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:18:17] "GET /static/css/main.css HTTP/1.1" 200 -
+2021-09-24,03:26:02 INFO app "About Us" page retrieved
+2021-09-24,03:26:02 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:26:02] "GET /about HTTP/1.1" 200 -
+2021-09-24,03:26:35 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:26:35] "GET /metrics HTTP/1.1" 200 -
+2021-09-24,03:28:25 INFO app Article "2020 CNCF Annual Report" retrieved
+2021-09-24,03:28:25 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:28:25] "GET /1 HTTP/1.1" 200 -
+2021-09-24,03:28:31 INFO app Article "KubeCon + CloudNativeCon 2021" retrieved
+2021-09-24,03:28:31 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:28:31] "GET /2 HTTP/1.1" 200 -
+2021-09-24,03:28:38 INFO app Article "Kubernetes v1.20 Release Notes" retrieved
+2021-09-24,03:28:38 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:28:38] "GET /3 HTTP/1.1" 200 -
+2021-09-24,03:28:42 INFO app Article "CNCF Cloud Native Interactive Landscape" retrieved
+2021-09-24,03:28:42 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:28:42] "GET /4 HTTP/1.1" 200 -
+2021-09-24,03:28:46 INFO app Article "CNCF Cloud Native Definition v1.0" retrieved
+2021-09-24,03:28:46 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:28:46] "GET /5 HTTP/1.1" 200 -
+2021-09-24,03:28:49 INFO app Article "Kubernetes Certification" retrieved
+2021-09-24,03:28:49 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:28:49] "GET /6 HTTP/1.1" 200 -
+2021-09-24,03:28:53 INFO app Non-existing article accessed
+2021-09-24,03:28:53 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:28:53] "GET /7 HTTP/1.1" 404 -
+2021-09-24,03:35:37 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:35:37] "GET /create HTTP/1.1" 200 -
+2021-09-24,03:36:41 INFO app New article "Cloud Native Apps Booming" created
+2021-09-24,03:36:41 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:36:41] "POST /create HTTP/1.1" 302 -
+2021-09-24,03:36:41 INFO werkzeug 172.17.0.1 - - [24/Sep/2021 03:36:41] "GET / HTTP/1.1" 200 -
