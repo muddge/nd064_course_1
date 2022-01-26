@@ -24,7 +24,11 @@ resources:
     memory: 128Mi
     
 livenessProbe:
-  path: /healthz
+  httpGet:
+    path: /healthz
+    port: containerPort
 
 readinessProbe:
-  path: /healthz
+  httpGet:
+    path: /healthz
+    port: containerPort
