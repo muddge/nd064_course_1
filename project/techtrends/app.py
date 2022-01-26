@@ -1,5 +1,5 @@
 import sqlite3
-
+import sys
 import logging
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, Response
 from werkzeug.exceptions import abort
@@ -16,6 +16,8 @@ connection_count = 0
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    global connection_count
+    connection_count += 1
     return connection
 
 # Function to get a post using its ID
@@ -53,8 +55,6 @@ def index():
 # If the post ID is not found a 404 page is shown
 @app.route('/<int:post_id>')
 def post(post_id):
-    global connection_count
-    connection_count += 1
     post = get_post(post_id)
     if post is None:
       app.logger.info('Non-existing article accessed')
@@ -98,6 +98,7 @@ def healthz():
 # Route for metrics endpoint
 @app.route('/metrics')
 def metrics():
+    global connection_count
     connection = get_db_connection()
     post_count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
     response = app.response_class(
@@ -110,5 +111,8 @@ def metrics():
 # start the application on port 3111
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port='3111')
+   # Send STDOUT and STDERR to app log
+   sys.stdout.write = app.logger.info
+   sys.stderr.write = app.logger.info
 
 # dummy line added to test GitHub Workflow Action
